@@ -1,8 +1,7 @@
-FROM alpine
+FROM nginx:alpine
 
 RUN apk --no-cache add \
     coreutils \
-    nginx \
     php7 \
     git \
     unzip \
@@ -29,4 +28,4 @@ RUN apk --no-cache add \
 
 RUN wget https://getcomposer.org/installer && php installer --install-dir=/usr/local/bin --filename=composer && composer global require hirak/prestissimo
 
-
+CMD ["/usr/bin/php-fpm", "-F"]
